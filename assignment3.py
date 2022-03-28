@@ -188,7 +188,7 @@ def get_message():
         else:
             print("Not a valid message! Letters must be in the alphabet.")
             pass
-        return output
+    return output
 
 
 def get_cyphertext():
@@ -257,26 +257,28 @@ def main():
     :return: none
     """
     choice = get_choice()
-    while choice != 'Q':
-        if choice == 'E':
+    if choice == 'E':
+        key = get_key()
+        while key == "":
             key = get_key()
-            while not key:
-                key = get_key()
+        message = get_message()
+        while message == "":
             message = get_message()
-            while not message:
-                message = get_message()
-            print(encrypt_vigenere(key, message))
-        elif choice == 'D':
+        print(encrypt_vigenere(key, message))
+        main()
+    elif choice == 'D':
+        key = get_key()
+        while key == "":
             key = get_key()
-            while not key:
-                key = get_key()
+        message = get_cyphertext()
+        while message == "":
             message = get_cyphertext()
-            while not message:
-                message = get_cyphertext()
-            print(decrypt_vigenere(key, message))
-        else:
-            print("Invalid response!")
-            main()
+        print(decrypt_vigenere(key, message))
+        main()
+    elif choice == 'Q':
+        pass
+    else:
+        print("Invalid response!")
         main()
 
 
