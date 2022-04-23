@@ -89,12 +89,12 @@ def get_counts(chain):
     :rtype: list of integers
     """
     sequence = chain
-    Acount = chain.count("a") + chain.count("A")
-    Ccount = chain.count("c") + chain.count("C")
-    Gcount = chain.count("g") + chain.count("G")
-    Tcount = chain.count("t") + chain.count("T")
+    a_count = chain.count("a") + chain.count("A")
+    c_count = chain.count("c") + chain.count("C")
+    g_count = chain.count("g") + chain.count("G")
+    t_count = chain.count("t") + chain.count("T")
     junk_count = chain.count("-")
-    counts = [Acount, Ccount, Gcount, Tcount]
+    counts = [a_count, c_count, g_count, t_count]
     return counts
 
 
@@ -111,12 +111,12 @@ def get_total_mass(counts, junk_count):
     :rtype: float
     """
     junkmass = junk_count * 100.0
-    Amass = counts[0] * _MASSES[0]
-    Cmass = counts[1] * _MASSES[1]
-    Gmass = counts[2] * _MASSES[2]
-    Tmass = counts[3] * _MASSES[3]
+    a_mass = counts[0] * _MASSES[0]
+    c_mass = counts[1] * _MASSES[1]
+    g_mass = counts[2] * _MASSES[2]
+    t_mass = counts[3] * _MASSES[3]
     counts = [Amass, Cmass, Gmass, Tmass]
-    total_mass = Amass + Cmass + Gmass + Tmass + junkmass
+    total_mass = a_mass + c_mass + g_mass + t_mass + junkmass
     total_mass = round(total_mass, 2)
     return total_mass
 
