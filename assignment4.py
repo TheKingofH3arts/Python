@@ -5,35 +5,35 @@ Course: CS1430, Section 02,  Spring 2022
 
 Assignment: Assignment 04
 
-Purpose:    Your program should work with the two given input files.
-            Reads in DNA data from a file and outputs to another file.
-            Determines whether or not each piece of DNA is a protein.
-Input:      The DNA input data consists of line pairs.  The first line has the
-            name of the nucleotide sequence, and the second is the nucleotide
-            sequence itself.  Each character in a sequence of nucleotides will
-            be A, C, G, T, or a dash character, "-".
-            The nucleotides in the input can be either upper or lowercase.
+Purpose:Your program should work with the two given input files.
+        Reads in DNA data from a file and outputs to another file.
+        Determines whether or not each piece of DNA is a protein.
+Input:  The DNA input data consists of line pairs.  The first line has the
+        name of the nucleotide sequence, and the second is the nucleotide
+        sequence itself.  Each character in a sequence of nucleotides will
+        be A, C, G, T, or a dash character, "-".
+        The nucleotides in the input can be either upper or lowercase.
 
-            Your program begins with an introduction and prompts for input and
-            output file names.
-            * You may assume the user will type the name of an
-            existing input file that is in the proper format.
-            * You may assume that the input file exists, is readable, and
-            contains valid input.  (In other words, you should not re-prompt
-            for input or output file names.)
-            * You may assume that each sequence's number of nucleotides
-            without dashes) will be a multiple of 3, although the nucleotides
-            on a line might be in either uppercase or lowercase or a
-            combination.
-            * Your program reads the input file to process its nucleotide
-            sequences and outputs the results into the given output file.
+        Your program begins with an introduction and prompts for input and
+        output file names.
+        * You may assume the user will type the name of an
+        existing input file that is in the proper format.
+        * You may assume that the input file exists, is readable, and
+        contains valid input.  (In other words, you should not re-prompt
+        for input or output file names.)
+        * You may assume that each sequence's number of nucleotides
+        without dashes) will be a multiple of 3, although the nucleotides
+        on a line might be in either uppercase or lowercase or a
+        combination.
+        * Your program reads the input file to process its nucleotide
+        sequences and outputs the results into the given output file.
 
-Output:     The nucleotide sequence is output in uppercase, and that the
-            nucleotide counts and mass percentages are shown in A, C, G, T order.
-            A given codon such as GAT might occur more than once in the same
-            sequence.
-            Your program should overwrite any existing data in the output file.
-Notes:      Thanks to Allison Obourn for the idea for this program.
+Output: The nucleotide sequence is output in uppercase, and that the
+        nucleotide counts and mass percentages are shown in A, C, G, T order.
+        A given codon such as GAT might occur more than once in the same
+        sequence.
+        Your program should overwrite any existing data in the output file.
+Notes:  Thanks to Allison Obourn for the idea for this program.
 """
 #########################
 # IMPORTS
@@ -74,18 +74,17 @@ def main():
             with open(in_file) as in_file:
                 lines = in_file.readlines()
 
-            # process each possible protein from the file
-        report_results()
+                # process each possible protein from the file
 
 
 def get_counts(chain):
     """
     Counts the nucleotides in the given String of characters ACGT
-    and returns a list containing {Acount, Ccount, Gcount, Tcount}.
+    and returns a list containing {a_count, c_count, g_count, t_count}.
     :param: chain
     :type chain: string
     :return: list of counts of each nucleotide in ACGT,
-    {Acount, Ccount, Gcount, Tcount}
+    {a_count, c_count, g_count, t_count}
     :rtype: list of integers
     """
     sequence = chain
@@ -103,20 +102,20 @@ def get_total_mass(counts, junk_count):
     Computes/returns the total mass of the given sequence of nucleotides,
     treating each "-" as a junk section with 100.0 mass.
     :param counts: list of counts of each nucleotide in ACGT,
-    {Acount, Ccount, Gcount, Tcount}
+    {a_count, c_count, g_count, t_count}
     :type counts: list of integers
     :param junk_count: number of dashes in the nucleotide sequence
     :type junk_count: integer
     :return: total mass of the given nucleotide sequence
     :rtype: float
     """
-    junkmass = junk_count * 100.0
+    junk_mass = junk_count * 100.0
     a_mass = counts[0] * _MASSES[0]
     c_mass = counts[1] * _MASSES[1]
     g_mass = counts[2] * _MASSES[2]
     t_mass = counts[3] * _MASSES[3]
-    counts = [Amass, Cmass, Gmass, Tmass]
-    total_mass = a_mass + c_mass + g_mass + t_mass + junkmass
+    counts = [a_mass, c_mass, g_mass, t_mass]
+    total_mass = a_mass + c_mass + g_mass + t_mass + junk_mass
     total_mass = round(total_mass, 2)
     return total_mass
 
@@ -195,8 +194,6 @@ def report_results(name, sequence, counts, total_mass, percentages, codons,
     out_file.write("Is protein?: " + x)
     
 
-
-
 def is_protein(codons, percentages):
     """
     Returns a True if the given sequence of codons encodes a protein,
@@ -219,7 +216,6 @@ def is_protein(codons, percentages):
     return isprotein
 
 
-
 def round1(value):
     """
     Rounds the given real number to one digit past the decimal point.
@@ -229,7 +225,6 @@ def round1(value):
     :rtype: float
     """
     return round(value * _TENTHS_PRECISION) / _TENTHS_PRECISION
-
 
 
 def nuc_index(nucleotide):
