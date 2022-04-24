@@ -1,10 +1,7 @@
 """
 Name: Dylan Brodie, Nick Loehrke
-
 Course: CS1430, Section 02,  Spring 2022
-
 Assignment: Assignment 04
-
 Purpose:Your program should work with the two given input files.
         Reads in DNA data from a file and outputs to another file.
         Determines whether or not each piece of DNA is a protein.
@@ -13,7 +10,6 @@ Input:  The DNA input data consists of line pairs.  The first line has the
         sequence itself.  Each character in a sequence of nucleotides will
         be A, C, G, T, or a dash character, "-".
         The nucleotides in the input can be either upper or lowercase.
-
         Your program begins with an introduction and prompts for input and
         output file names.
         * You may assume the user will type the name of an
@@ -27,7 +23,6 @@ Input:  The DNA input data consists of line pairs.  The first line has the
         combination.
         * Your program reads the input file to process its nucleotide
         sequences and outputs the results into the given output file.
-
 Output: The nucleotide sequence is output in uppercase, and that the
         nucleotide counts and mass percentages are shown in A, C, G, T order.
         A given codon such as GAT might occur more than once in the same
@@ -122,7 +117,7 @@ def get_total_mass(counts, junk_count):
 
 def get_percentages(counts, total_mass):
     """
-    Looks at {Acount, Ccount, Gcount, Tcount} in given list counts and
+    Looks at {a_count, c_count, g_count, t_count} in given list counts and
     uses them to compute and return a list of mass percentages
     {A%, C%, G%, T%} rounded to nearest 0.1 based on the molecular
     weight of A, C, G, and T as defined in the spec.
