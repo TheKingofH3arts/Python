@@ -127,7 +127,7 @@ def get_percentages(counts, total_mass):
     {A%, C%, G%, T%} rounded to nearest 0.1 based on the molecular
     weight of A, C, G, and T as defined in the spec.
     :param counts:list of counts of each nucleotide in ACGT,
-    {Acount, Ccount, Gcount, Tcount}
+    {a_count, c_count, g_count, t_count}
     :type counts list of integers
     :param total_mass:  total mass of the given nucleotide sequence
     :type total_mass: float
